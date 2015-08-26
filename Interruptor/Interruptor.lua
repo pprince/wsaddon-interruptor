@@ -656,11 +656,11 @@ function Interruptor:UpdateCast(unitTarget)
 		if self.db.global.tHighlights[strCastName] then
 			self.wndBar:SetBarColor(self.db.profile.Castbar.Colors["highlighted"])
 			if self.db.global.tHighlights[strCastName] == 1 then
-				Sound.Play(184)
+				Sound.PlayFile("Sounds/jump.wav")
 			elseif self.db.global.tHighlights[strCastName] == 2 then
-				Sound.PlayFile("HighlightSound.wav")
+				Sound.PlayFile("Sounds/buzz.wav")
 			elseif self.db.global.tHighlights[strCastName] == 3 then
-				Sound.Play(212)
+				Sound.PlayFile("Sounds/alarm.wav")
 			end
 		else
 			self.wndBar:SetBarColor(self.db.profile.Castbar.Colors[self.strCCStatus])
