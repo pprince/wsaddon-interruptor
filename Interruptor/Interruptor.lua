@@ -376,7 +376,11 @@ if strParam and strParam:find("highlight") then
 	if self.unitTheUnit and self.unitTheUnit:ShouldShowCastBar() then
 		strCastName = self.unitTheUnit:GetCastName()
 	end
-	if strCastName and strCastName:len() > 0  then
+
+        if strCastName and strCastName:len() > 0  then
+            if strParam:find("nohighlight") then
+                self.db.global.tHighlights[strCastName] = nil
+            else
 		local nSound = 0
 		if strParam:find("1") then
 			--Print("sound1")
@@ -388,11 +392,8 @@ if strParam and strParam:find("highlight") then
 			--Print("sound2")
 			nSound = 3
 		end
-		if self.db.global.tHighlights[strCastName] == nSound then
-			self.db.global.tHighlights[strCastName] = nil
-		else
-			self.db.global.tHighlights[strCastName] = nSound
-		end
+                self.db.global.tHighlights[strCastName] = nSound
+            end
 	end
 else
 --self.wndConfig:Show(true)
